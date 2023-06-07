@@ -9,6 +9,10 @@
 
 name: Publish Docker image
 
+env:
+  NAME: flask-gunicorn-server
+  NAMESPACE: albird
+
 on:
   push:
     branches: [ "main" ]
@@ -38,5 +42,4 @@ jobs:
         with:
           context: ./app
           push: true
-          tags: latest
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ env.NAMESPACE }}/${{ env.NAME }}:latest
