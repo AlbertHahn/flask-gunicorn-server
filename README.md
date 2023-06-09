@@ -24,3 +24,19 @@ docker build -t flask-app .
 docker run -p 5000:5000 flask-app
 http://0.0.0.0:5000
 ```
+
+## Helm
+
+Installing the helm chart with custom values.
+
+```sh
+cd helm/flask-app
+helm upgrade -f values.yaml --install webserver . \        
+  --namespace webserver --create-namespace
+```
+
+Cleanup.
+
+```sh
+helm uninstall webserver -n webserver
+```
